@@ -324,31 +324,10 @@ class GasTracker {
         });
     }
 }
-
-// 处理命令行参数
-const args = process.argv.slice(2);
 const gasTracker = new GasTracker();
 
-if (args.length === 0) {
-    // 默认每5分钟查询一次
-    gasTracker.startScheduledQuery(5);
-} else if (args[0] === 'once') {
-    // 只查询一次
-    gasTracker.queryOnce();
-} else if (args[0] === 'interval' && args[1]) {
-    // 自定义查询间隔
-    const interval = parseInt(args[1]);
-    if (interval > 0 && interval <= 60) {
-        gasTracker.startScheduledQuery(interval);
-    } else {
-        console.log('间隔时间必须在1-60分钟之间');
-    }
-} else {
-    console.log('使用方法:');
-    console.log('  node index.js              # 每5分钟查询一次');
-    console.log('  node index.js once         # 只查询一次');
-    console.log('  node index.js interval 10  # 每10分钟查询一次');
-}
+gasTracker.startScheduledQuery(process.env.DEFAULT_INTERVAL || 1);
+
 
 // 优雅退出
 process.on('SIGINT', () => {
