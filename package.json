@@ -1,0 +1,25 @@
+{
+  "name": "main-gas-tracker",
+  "version": "1.0.0",
+  "description": "以太坊主网Gas价格查询工具",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "keywords": [
+    "ethereum",
+    "gas",
+    "tracker",
+    "blockchain"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@jswork/bark-jssdk": "^1.0.6",
+    "axios": "^1.11.0",
+    "dotenv": "^17.2.1",
+    "node-cron": "^3.0.3"
+  }
+}
